@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import {fetchDataFromApi} from "../utils/api";
 import Context from './contextApi'
 
-export const ContextApiProvider = ({children}) => {
+export const ContextApiProvider = (props) => {
     const [loading, setLoading] = useState(false);
     const [searchResults, setSearchResults] = useState(false);
     const [selectCategories, setSelectCategories] = useState(false);
@@ -35,7 +35,7 @@ export const ContextApiProvider = ({children}) => {
                setMobileMenu 
             }}>
 
-                {children}
+                {props.children}
 
         </Context.Provider>
     )
