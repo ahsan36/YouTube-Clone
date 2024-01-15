@@ -4,15 +4,15 @@ import Context from './contextApi'
 
 export const ContextApiProvider = (props) => {
     const [loading, setLoading] = useState(false);
-    const [searchResults, setSearchResults] = useState(false);
-    const [selectCategories, setSelectCategories] = useState(false);
+    const [searchResults, setSearchResults] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState("New");
     const [mobileMenu, setMobileMenu] = useState(false);
 
     // The data will load when we select the category.
 
     useEffect (() => {
-        fetchSelectedCategoryData(selectCategories);
-    }, [selectCategories]);
+        fetchSelectedCategoryData(selectedCategory);
+    }, [selectedCategory]);
 
     const fetchSelectedCategoryData = (query) => {
         setLoading(true); 
@@ -29,8 +29,8 @@ export const ContextApiProvider = (props) => {
                loading,
                setLoading,
                searchResults,
-               selectCategories,
-               setSelectCategories,
+               selectedCategory,
+               setSelectedCategory,
                mobileMenu,
                setMobileMenu 
             }}>

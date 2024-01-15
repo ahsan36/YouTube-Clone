@@ -20,17 +20,28 @@ const Header = () => {
 
   const { loading, mobileMenu, setMobileMenu} = useContext(Context);
 
-  const navigate = useNavigate(); // Error shi krna hai
+  const navigate = useNavigate();
+
+  // const searchQueryHandler = (event) => {
+
+  //   // optional chaining(?) => if event is undefine then other (key) will be not executed
+
+  //   if((event?.key === "Enter" || event === "searchButton") && searchQuery?.length > 0) {
+  //     navigate(`/searchResult/${searchQuery}`);
+  //   }
+  // };
 
   const searchQueryHandler = (event) => {
 
     // optional chaining(?) => if event is undefine then other (key) will be not executed
-
-    if((event?.key ==="Enter" || event === "searchButton") && searchQuery?.length > 0) {
-      navigate(`/searchResult/${searchQuery}`); // Error shi krna hai
-      console.log("Success");
+    if (
+        (event?.key === "Enter" || event === "searchButton") &&
+        searchQuery?.length > 0
+    ) {
+        navigate(`/searchResult/${searchQuery}`);
     }
   };
+  
 
   // Menu For Mobile 
 
@@ -38,11 +49,8 @@ const Header = () => {
     setMobileMenu(!mobileMenu);
   };
 
-  // Error shi krna hai
-
-  const {pathname} = useLocation();
-  const pageName = pathname?.split("/").filter(Boolean)?.[0];
-  // const pageName = "song";
+  const { pathname } = useLocation();
+  const pageName = pathname?.split("/")?.filter(Boolean)?.[0];
 
   return (
     <div className="sticky top-0 z-10 flex flex-row items-center justify-between h-14 px-4 md:px-5 bg-white dark:bg-black">

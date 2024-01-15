@@ -7,16 +7,16 @@ import { ContextApiProvider} from '../context/ContextApiProvider';
 
 const LeftNav = () => {
 
-  const { selectCategories, setSelectCategories, mobileMenu} = useContext(Context);
+  const { selectedCategory, setSelectedCategory, mobileMenu} = useContext(Context);
 
   const navigate = useNavigate();
 
   const clickHandler = (name, type) => {
     switch (type) {
         case "category":
-            return setSelectCategories(name);
+            return setSelectedCategory(name);
         case "home":
-            return setSelectCategories(name);
+            return setSelectedCategory(name);
         case "menu":
             return false;
         default:
@@ -25,7 +25,8 @@ const LeftNav = () => {
   };
 
   return (
-    <div className='md:block w-[240px] overflow-y-auto h-full py-4 bg-black absolute md:relative z-10 translate-x-[-240px] md:translate-x-0 transition-all'>
+    <div className={`md:block w-[240px] overflow-y-auto h-full py-4 bg-black absolute md:relative z-10 translate-x-[-240px] md:translate-x-0 transition-all ${mobileMenu ? "translate-x-0" : ""
+    }}`}>
       <div className="flex px-5 flex-col">
         {categories.map((item) => {
           return (
@@ -39,7 +40,7 @@ const LeftNav = () => {
                 }}
 
                 className={
-                  `${selectCategories === item.name ? "bg-white/[0.15]" : ""}`
+                  `${selectedCategory === item.name ? "bg-white/[0.15]" : ""}`
                 }
               />
 

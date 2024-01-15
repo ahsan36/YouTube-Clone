@@ -26,7 +26,7 @@ const Feed = () => {
 
             return (
               <VideoCard 
-                key = {item?.video} 
+                key = {item?.video?.videoId} 
                 video = {item?.video}
               />
             );
