@@ -4,13 +4,12 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import ytLogo from '../images/yt-logo.png';
 import ytLogoMobile from '../images/yt-logo-mobile.png';
 
-import { SlClose, SlMenu } from "react-icons/sl";
+import { SlMenu } from "react-icons/sl";
 import { IoIosSearch } from "react-icons/io";
 import { RiVideoAddLine } from "react-icons/ri";
 import { FiBell } from "react-icons/fi";
 import { CgClose } from "react-icons/cg";
 
-import { ContextApiProvider } from "../context/ContextApiProvider"
 import Context from "../context/contextApi";
 import Loader from '../shared/Loader'
 
@@ -22,15 +21,6 @@ const Header = () => {
 
   const navigate = useNavigate();
 
-  // const searchQueryHandler = (event) => {
-
-  //   // optional chaining(?) => if event is undefine then other (key) will be not executed
-
-  //   if((event?.key === "Enter" || event === "searchButton") && searchQuery?.length > 0) {
-  //     navigate(`/searchResult/${searchQuery}`);
-  //   }
-  // };
-
   const searchQueryHandler = (event) => {
 
     // optional chaining(?) => if event is undefine then other (key) will be not executed
@@ -38,7 +28,7 @@ const Header = () => {
         (event?.key === "Enter" || event === "searchButton") &&
         searchQuery?.length > 0
     ) {
-        navigate(`/searchResult/${searchQuery}`);
+        navigate(`/searchResult/${encodeURIComponent(searchQuery)}`);
     }
   };
   
@@ -126,7 +116,7 @@ const Header = () => {
         </div>
 
         <div className="flex h-8 w-8 overflow-hidden rounded-full md:ml-4">
-            <img src="https://xsgames.co/randomusers/assets/avatars/male/59.jpg" />
+            <img src="./src/assets/profile-pic.png" />
         </div>
 
       </div>

@@ -1,17 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client'
-import {RouterProvider, BrowserRouter, Route, createRoutesFromElements, Routes} from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Header from './components/Header'
 import Feed from './components/Feed'
 import SearchResult from './components/SearchResult'
 import VideoDetails from './components/VideoDetails'
 import { ContextApiProvider } from "./context/ContextApiProvider"
+import { Navigate } from "react-router-dom";
 
 function App() {
 
   return (
     <ContextApiProvider>
-      <div className='flex flex-col h-full'>
         <BrowserRouter>
           <div className="flex flex-col h-full">
               <Header />
@@ -22,10 +21,11 @@ function App() {
                       element={<SearchResult />}
                   />
                   <Route path="/video/:id" element={<VideoDetails />} />
+
+                  <Route path='*' element={<Navigate to='/' replace />} />
               </Routes>
           </div>
       </BrowserRouter>
-      </div>
     </ContextApiProvider>
   )
 }
