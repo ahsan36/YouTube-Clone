@@ -31,8 +31,6 @@ const Feed = () => {
             );
 
           })}
-          
-           <h1>Error</h1>
         </div>
       </div>
     </div>
